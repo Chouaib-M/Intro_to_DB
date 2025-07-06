@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 MySQLServer.py - Script to create alx_book_store database
+GitHub repository: Intro_to_DB
+File: MySQLServer.py
 """
 
 import mysql.connector
@@ -9,6 +11,8 @@ from mysql.connector import Error
 def create_database():
     """Create the alx_book_store database if it doesn't exist"""
     connection = None
+    cursor = None
+    
     try:
         # Connect to MySQL server
         connection = mysql.connector.connect(
@@ -30,8 +34,9 @@ def create_database():
         
     finally:
         # Close database connection
-        if connection and connection.is_connected():
+        if cursor:
             cursor.close()
+        if connection and connection.is_connected():
             connection.close()
 
 if __name__ == "__main__":
